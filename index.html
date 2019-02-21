@@ -38,6 +38,9 @@
       if (y + dy < 0) {
         dy = -dy;
       }
+      if (y + dy > canvas.height) {
+        dy = -dy;
+      }
     }
     setInterval(draw, 10);
 
