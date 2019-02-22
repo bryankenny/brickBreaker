@@ -23,6 +23,8 @@
   let paddleHeight = 10;
   let paddleWidth = 75;
   let paddleX = (canvas.width-paddleWidth)/2;
+  let rightPressed = false;
+  let leftPressed = false;
 
     function drawBall() {
       ctx.beginPath();
@@ -55,6 +57,37 @@
 
       x += dx;
       y += dy;
+
+      if (rightPressed) {
+        paddleX += 7;
+      }
+
+      else if (leftPressed) {
+        paddleX += -7;
+      }
+    }
+
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    function keyDownHandler(event) {
+      if (event.key == "Right" || event.key == "ArrowRight") {
+        rightPressed = true;
+      }
+
+      else if (event.key == "Left" || event.key == "ArrowLeft") {
+        leftPressed = true;
+      }
+    }
+
+    function keyUpHandler(event) {
+      if (event.key == "Right" || event.key == "ArrowRight") {
+        rightPressed = false;
+      }
+
+      else if (event.key == "Left" || event.key == "ArrowLeft") {
+        leftPressed = false;
+      }
     }
 
     setInterval(draw, 10);
