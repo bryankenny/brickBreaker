@@ -151,6 +151,14 @@
 
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
+    document.addEventListener("mousemove", mouseMoveHandler, false);
+
+    function mouseMoveHandler(event) {
+      let relativeX = event.clientX - canvas.offsetLeft;
+      if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+      }
+    }
 
     function keyDownHandler(event) {
       if (event.key == "Right" || event.key == "ArrowRight") {
